@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style></style>
+  <body>
+    <section>
+      <div>
+        <button id="myButton">#051937</button>
+        <button id="myButton2">#A8EB12</button>
+      </div>
+      <h2>click to copy your text</h2>
+      <div class="copyCode">
+        background-image: linear-gradient(to
+        right,rgb(92,145,229),rgb(152,63198))
+      </div>
+    </section>
+
+    <script>
+      var myButton = document.querySelector("#myButton");
+      var myButton2 = document.querySelector("#myButton2");
+      var copyDiv = document.querySelector(".copyCode");
+      var rgba1 = "#000";
+      var rgba2 = "#fff";
+
+      const getHexCode = () => {
+        let myHexValues = "0123456789abcdef";
+        let colors = "#";
+        for (let i = 0; i < 6; i++) {
+          colors = colors + myHexValues[Math.floor(Math.random() * 16)];
+        }
+        return colors;
+      };
+      const handleButtonClick = () => {
+        rgba1 = getHexCode();
+        myButton.innerText = rgba1;
+        document.body.style.backgroundImage = `linear-gradient(to right,${rgba1},${rgba2})`;
+        copyDiv.innerHTML = `background-image: linear-gradient(to right,${rgba1},${rgba2})`;
+      };
+
+      const handleButtonClick2 = () => {
+        rgba2 = getHexCode();
+        myButton2.innerText = rgba2;
+        document.body.style.backgroundImage = `linear-gradient(to right,${rgba1},${rgba2})`;
+        copyDiv.innerHTML = `background-image: linear-gradient(to right,${rgba1},${rgba2})`;
+      };
+
+      myButton.addEventListener("click", handleButtonClick);
+      myButton2.addEventListener("click", handleButtonClick2);
+
+      copyDiv.addEventListener("click", () => {
+        navigator.clipboard.writeText(copyDiv.innerText);
+      });
+    </script>
+  </body>
+</html>
